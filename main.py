@@ -35,3 +35,8 @@ def get_car(id: str):
         if car.identifier == id:
             return car
     raise HTTPException(status_code=404, detail="Le phone comportant l'id fourni n'existe pas ou n'a pas été trouvé")
+
+@app.put("/cars/{id}/characteristics")
+def update_car_characteristics(id: str, characteristics: Characteristics):
+    for car in cars_liste:
+            return car
