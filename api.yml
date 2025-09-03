@@ -30,3 +30,31 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Car'
+
+  /cars/{id}:
+    get:
+      summary: Avoir le car par id
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: L'identifiant du voiture
+      responses:
+        '200':
+          description: Car details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Car'
+        '404':
+          description: Car not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  detail:
+                    type: string
+                    example: "L'identifiant fourni n'est pas trouvé dans la liste"
