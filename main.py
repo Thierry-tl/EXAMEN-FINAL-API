@@ -24,3 +24,14 @@ def ping():
 def create_car(car: Car):
     cars_liste.append(car)
     return car
+
+@app.get("/cars")
+def get_cars():
+    return cars_liste
+
+@app.get("/cars/{id}")
+def get_car(id: str):
+    for car in cars_liste:
+        if car.identifier == id:
+            return car
+    raise HTTPException(status_code=404, detail="Le phone comportant l'id fourni n'existe pas ou n'a pas été trouvé")
